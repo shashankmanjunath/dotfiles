@@ -1,1 +1,66 @@
-/home/ubuntu/.vimrc
+" Shashank Manjunath .vimrc
+" Created May 22 2019
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+" Line numbers
+set number
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Utility
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
+
+" Add all plugins before following line
+call vundle#end()
+filetype plugin indent on
+
+" Changing color scheme to work better with dark color terminal
+syntax on
+colorscheme desert
+
+inoremap jk <Esc>
+
+" Mapping open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+" Add spaces after comment deliniters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+
+" Allow commmenting and inverting empy lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1

@@ -21,7 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Utility
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 
 " Add all plugins before following line
@@ -32,7 +32,18 @@ filetype plugin indent on
 syntax on
 colorscheme desert
 
+" Remapping Esc key to jk
 inoremap jk <Esc>
+
+" Search as characters are entered, and highlight matches
+set incsearch
+set hlsearch
+
+" Turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Visual autocomplete for command menu
+set wildmenu
 
 " Mapping open NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -64,3 +75,6 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+
+" Adding line at 120 characters
+set colorcolumn=120

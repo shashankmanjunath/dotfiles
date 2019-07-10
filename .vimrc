@@ -78,3 +78,9 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Adding line at 120 characters
 set colorcolumn=120
+
+" Turning off swap files
+set noswapfile
+set nobackup
+set nowb
+

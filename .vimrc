@@ -18,22 +18,29 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Git handling
+Plugin 'airblade/vim-gitgutter'
+
 " Utility
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" Colorscheme
+Plugin 'sjl/badwolf'
 
 " Add all plugins before following line
 call vundle#end()
 filetype plugin indent on
 
-" Changing color scheme to work better with dark color terminal
-syntax on
-colorscheme desert
-
 " Remapping Esc key to jk
 inoremap jk <Esc>
+
+" Setting up badwolf colorscheme
+syntax on
+set background=dark
+colorscheme badwolf
 
 " Search as characters are entered, and highlight matches
 set incsearch
@@ -86,3 +93,15 @@ set nowb
 
 " Automatically refresh after buffer is changed externally
 set autoread
+
+" badwolf setings
+" Make tab line darker than the background
+let g:badwolf_tabline = 0
+
+" Make gutters darker than the background
+let g:badwolf_darkgutter = 1
+
+" Setting indent guide sizes
+set ts=4 sw=4 et
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1

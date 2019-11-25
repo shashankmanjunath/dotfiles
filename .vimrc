@@ -84,3 +84,5 @@ set noswapfile
 set nobackup
 set nowb
 
+" Automatically refresh after buffer is changed externally
+set autoread

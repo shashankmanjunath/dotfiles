@@ -48,7 +48,7 @@ inoremap jk <Esc>
 
 " Setting up badwolf colorscheme
 set background=dark
-colorscheme badwolf
+colorscheme desert
 
 " Search as characters are entered, and highlight matches
 set incsearch

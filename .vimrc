@@ -94,6 +94,9 @@ set noswapfile
 set nobackup
 set nowb
 
+" Automatically refresh after buffer is changed externally
+set autoread
+
 " badwolf setings
 " Make tab line darker than the background
 let g:badwolf_tabline = 0

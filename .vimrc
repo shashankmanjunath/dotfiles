@@ -21,6 +21,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Git handling
 Plugin 'airblade/vim-gitgutter'
 
+" LaTeX handling
+Plugin 'xuhdev/vim-latex-live-preview'
+
 " Utility
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -40,7 +43,7 @@ inoremap jk <Esc>
 " Setting up badwolf colorscheme
 syntax on
 set background=dark
-colorscheme badwolf
+colorscheme desert
 
 " Search as characters are entered, and highlight matches
 set incsearch

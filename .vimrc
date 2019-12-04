@@ -1,7 +1,13 @@
 " Shashank Manjunath .vimrc
 " Created May 22 2019
 
+set nocompatible
 filetype plugin indent on
+syntax on
+
+" Setting hybrid line numbers
+set number relativenumber
+
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -21,11 +27,14 @@ Plugin 'VundleVim/Vundle.vim'
 " Git handling
 Plugin 'airblade/vim-gitgutter'
 
+" LaTeX handling
+Plugin 'xuhdev/vim-latex-live-preview'
+
 " Utility
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'junegunn/goyo.vim'
 
 " Colorscheme
 Plugin 'sjl/badwolf'
@@ -38,7 +47,6 @@ filetype plugin indent on
 inoremap jk <Esc>
 
 " Setting up badwolf colorscheme
-syntax on
 set background=dark
 colorscheme badwolf
 
@@ -101,7 +109,3 @@ let g:badwolf_tabline = 0
 " Make gutters darker than the background
 let g:badwolf_darkgutter = 1
 
-" Setting indent guide sizes
-set ts=4 sw=4 et
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1

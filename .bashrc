@@ -2,12 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Vi mode bash
-set -o vi
-
-# Rebinding esc to jk in bash vi mode
-bind '"jk":vi-movement-mode'
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -43,13 +37,13 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -63,20 +57,21 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # PS1='\[\033[31m\][ ${debian_chroot:+($debian_chroot)}\[\033[34m\]\u@\h\[\033[00m\]:\[\033[01;30m\]\w\[\033[31m\] ]$ \033[32m\]'
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# case "$TERM" in
+# xterm*|rxvt*)
+#     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#     ;;
+# *)
+#     ;;
+# esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -89,9 +84,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -122,4 +114,45 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias tmux="TERM=screen-256color-bce tmux"
+export CUDA_HOME=/usr/local/cuda
+export PATH=${CUDA_HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
+
+# For DM GPU cluster
+# export DOCKER_CERT_PATH=/home/ubuntu/Documents/docker/certs
+# export DOCKER_HOST=tcp://docker.cra.com:8443
+# export DOCKER_TLS_VERIFY=1
+
+# added by Anaconda3 installer
+# export PATH="/home/ubuntu/anaconda3/bin:$PATH"  # commented out by conda initialize
+
+export DEEPBOOST_ROOT=/home/ubuntu/Documents/dbonnx/
+source /opt/intel/computer_vision_sdk/bin/setupvars.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ubuntu/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Setting up vim coloration
+export TERM=xterm-256color
+export LANGUAGE="en"
+export LANG="C"
+export LC_MESSAGES="C"
+
+# Setting up vi mode in bash
+set -o vi
+
+# Remapping "Esc"
+bind '"jk":vi-movement-mode'
+

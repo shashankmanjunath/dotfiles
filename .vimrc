@@ -28,13 +28,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 
 " LaTeX handling
-Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'lervag/vimtex'
 
 " Utility
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/goyo.vim'
+Plugin 'itchyny/lightline.vim'
 
 " Colorscheme
 Plugin 'sjl/badwolf'
@@ -47,7 +48,8 @@ filetype plugin indent on
 inoremap jk <Esc>
 
 " Setting up badwolf colorscheme
-set background=dark
+" set background=dark
+" colorscheme badwolf
 colorscheme desert
 
 " Search as characters are entered, and highlight matches
@@ -109,3 +111,12 @@ let g:badwolf_tabline = 0
 " Make gutters darker than the background
 let g:badwolf_darkgutter = 1
 
+" LaTeX handling
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+" set conceallevel=1
+" let g:tex_conceal='abdmg'
+
+" Setting up lightline
+set laststatus=2

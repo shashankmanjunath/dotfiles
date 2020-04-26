@@ -1,5 +1,5 @@
 # Adding scripts folder to path
-export PATH=$PATH:/Users/smanjunath/scripts
+export PATH=$PATH:/home/ubuntu/scripts
 
 # Specifying vim as default editor
 export EDITOR=vim
@@ -8,7 +8,7 @@ export EDITOR=vim
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/smanjunath/.oh-my-zsh"
+export ZSH="/home/ubuntu/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -69,10 +69,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    fzf
     git
     history
-    vi-mode
     tmux
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,4 +108,32 @@ bindkey 'jk' vi-cmd-mode
 alias zshconfig="vim ~/.zshrc"
 alias setzsh="source ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Conda setup
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/ubuntu/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Setting up dbus env variables to run EOG/other gui applications remotely without errors
+# export $(dbus-launch)
+
+# Setting TERM to enable 256 color applications
+export TERM=screen-256color
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setting up CUDA
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 

@@ -7,6 +7,11 @@ export EDITOR=vim
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Changing coloration of autocomplete dirs
+eval "$(dircolors -p | \
+  sed 's/ 4[0-9];/ 01;/; s/;4[0-9];/;01;/g; s/;4[0-9] /;01 /' | \
+  dircolors /dev/stdin)"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/ubuntu/.oh-my-zsh"
 
@@ -136,4 +141,14 @@ export TERM=screen-256color
 # Setting up CUDA
 export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# Setting up TensorRT
+export TRT_SOURCE=~/Documents/tensorrt/TensorRT
+
+export TRT_RELEASE=~/Documents/tensorrt/TensorRT-7.0.0.11
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TRT_RELEASE/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
+
+export TRT_LIB_DIR=$TRT_RELEASE/lib
+export TRT_BIN_DIR=$TRT_SOURCE/build/out/
 

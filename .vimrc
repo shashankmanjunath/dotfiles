@@ -16,12 +16,13 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-" For C/C++/CUDA files, use 2 spaces
+" For certain filetypes, use 2 spaces
 autocmd Filetype h setlocal ts=2 sw=2 expandtab
 autocmd Filetype c setlocal ts=2 sw=2 expandtab
 autocmd Filetype cpp setlocal ts=2 sw=2 expandtab
 autocmd Filetype cuda setlocal ts=2 sw=2 expandtab
 autocmd Filetype tex setlocal ts=2 sw=2 expandtab
+autocmd Filetype Markdown setlocal ts=2 sw=2 expandtab
 
 " Line numbers
 set number
@@ -33,14 +34,22 @@ call vundle#begin()
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Git handling
-Plugin 'airblade/vim-gitgutter'
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+
+" Git visual cues
+" Plugin 'airblade/vim-gitgutter'
 
 " LaTeX handling
 Plugin 'lervag/vimtex'
 
 " Autocomplete/Jump to definition
 Plugin 'Valloric/YouCompleteMe'
+
+" Markdown Handling
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " Utility
 Plugin 'scrooloose/nerdtree'
@@ -131,8 +140,7 @@ let g:badwolf_darkgutter = 1
 
 " LaTeX handling
 let g:tex_flavor='latex'
-let g:vimtex_view_method='general'
-let g:vimtex_view_general_viewer='open -a Preview'
+let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 " set conceallevel=1
 " let g:tex_conceal='abdmg'
@@ -145,4 +153,15 @@ nnoremap <silent> <leader>r :Files<CR>
 
 " Setting maximum textwidth
 set tw=120
+
+" Markdown setup with grip
+let g:vim_markdown_preview_github=1
+let g:vim_markdown_folding_disabled=1
+
+" Git mappings
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
+nmap <leader>gs :G<CR>
 

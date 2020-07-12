@@ -1,5 +1,5 @@
 # Adding scripts folder to path
-export PATH=$PATH:/home/ubuntu/scripts
+export PATH=$PATH:$HOME/scripts
 
 # Specifying vim as default editor
 export EDITOR=vim
@@ -13,7 +13,7 @@ eval "$(dircolors -p | \
   dircolors /dev/stdin)"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/ubuntu/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -117,17 +117,17 @@ alias setzsh="source ~/.zshrc"
 # Conda setup
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ubuntu/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ubuntu/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/ubuntu/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 # Setting up dbus env variables to run EOG/other gui applications remotely without errors

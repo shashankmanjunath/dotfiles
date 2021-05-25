@@ -15,6 +15,10 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+" On deleting expanded tab, delete 4 spaces
+set softtabstop=4
+" Setting command window height to 2 by default
+set cmdheight=2
 
 " For certain filetypes, use 2 spaces
 autocmd Filetype h setlocal ts=2 sw=2 expandtab
@@ -43,13 +47,22 @@ Plugin 'tpope/vim-fugitive'
 " LaTeX handling
 Plugin 'lervag/vimtex'
 
+" Jupyter Notebook Handling
+" Plugin 'jupyter-vim/jupyter-vim'
+
 " Autocomplete/Jump to definition
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+
+" Syntax Checking
+Plugin 'dense-analysis/ale'
+
+" Writing Documents
+Plugin 'junegunn/goyo.vim'
 
 " Markdown Handling
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+" Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " Utility
 Plugin 'scrooloose/nerdtree'
@@ -155,8 +168,10 @@ nnoremap <silent> <leader>r :Files<CR>
 set tw=120
 
 " Markdown setup with grip
+let g:vim_markdown_preview_toggle=1
 let g:vim_markdown_preview_github=1
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_preview_pandoc=1
 
 " Git mappings
 nmap <leader>gh :diffget //3<CR>
@@ -165,3 +180,26 @@ nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 nmap <leader>gs :G<CR>
 
+" Goyo
+let g:goyo_width=120
+
+" Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+"
+" let g:syntastic_python_checkers = ['flake8', 'pylint']
+" let g:syntastic_python_flake8_args = "--max-line-length=120"
+" let g:syntastic_python_pylint_args = "--max-line-length=120"
+
+" ALE
+let g:ale_linters = {
+\    'python': ['flake8', 'pylint']
+\}
+let g:ale_python_flake8_options = "--max-line-length=120"
+let g:ale_python_pylint_options = "--max-line-length=120"

@@ -44,7 +44,7 @@ ZSH_THEME="ys"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -117,17 +117,17 @@ alias setzsh="source ~/.zshrc"
 # Conda setup
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/ubuntu/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/ubuntu/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/ubuntu/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
+__conda_setup="$('/home/smanjunath/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/smanjunath/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/smanjunath/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/smanjunath/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 # <<< conda initialize <<<
 
 # Setting up dbus env variables to run EOG/other gui applications remotely without errors
@@ -152,3 +152,5 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
 export TRT_LIB_DIR=$TRT_RELEASE/lib
 export TRT_BIN_DIR=$TRT_SOURCE/build/out/
 
+# Adding python3 bin to path
+export PATH=$PATH:/home/smanjunath/.local/bin

@@ -75,7 +75,8 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
 " Colorscheme
-Plugin 'sjl/badwolf'
+" Plugin 'sjl/badwolf'
+Plugin 'dracula/vim', { 'name': 'dracula'  }
 
 " Add all plugins before following line
 call vundle#end()
@@ -86,7 +87,8 @@ inoremap jk <Esc>
 
 " Setting up badwolf colorscheme
 set background=dark
-colorscheme badwolf
+colorscheme dracula
+" colorscheme badwolf
 " colorscheme desert
 
 " Ensuring that we are using 256 color terminal

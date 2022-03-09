@@ -8,9 +8,9 @@ export EDITOR=vim
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Changing coloration of autocomplete dirs
-eval "$(dircolors -p | \
-  sed 's/ 4[0-9];/ 01;/; s/;4[0-9];/;01;/g; s/;4[0-9] /;01 /' | \
-  dircolors /dev/stdin)"
+# eval "$(dircolors -p | \
+#   sed 's/ 4[0-9];/ 01;/; s/;4[0-9];/;01;/g; s/;4[0-9] /;01 /' | \
+#   dircolors /dev/stdin)"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -112,23 +112,6 @@ bindkey 'jk' vi-cmd-mode
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias setzsh="source ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Conda setup
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/smanjunath/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/smanjunath/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/smanjunath/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/smanjunath/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # Setting up dbus env variables to run EOG/other gui applications remotely without errors
 # export $(dbus-launch)
@@ -138,19 +121,22 @@ export TERM=screen-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Setting up CUDA
-export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-# Setting up TensorRT
-export TRT_SOURCE=~/Documents/tensorrt/TensorRT
-
-export TRT_RELEASE=~/Documents/tensorrt/TensorRT-7.0.0.11
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TRT_RELEASE/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
-
-export TRT_LIB_DIR=$TRT_RELEASE/lib
-export TRT_BIN_DIR=$TRT_SOURCE/build/out/
-
 # Adding python3 bin to path
 export PATH=$PATH:/home/smanjunath/.local/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/smanjunath/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/smanjunath/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/smanjunath/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/smanjunath/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="$HOME/miniconda3/bin:$PATH"

@@ -31,55 +31,47 @@ autocmd Filetype Markdown setlocal ts=2 sw=2 expandtab
 " Line numbers
 set number
 
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
 " Git wrapper
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Git visual cues
-" Plugin 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " LaTeX handling
-Plugin 'lervag/vimtex'
-
-" Jupyter Notebook Handling
-" Plugin 'jupyter-vim/jupyter-vim'
+Plug 'lervag/vimtex'
 
 " Autocomplete/Jump to definition
-" Plugin 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " Syntax Checking
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 " Writing Documents
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 
 " Markdown Handling
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-" Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Utility
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/lightline.vim'
 
 " fzf setup
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Colorscheme
-" Plugin 'sjl/badwolf'
-Plugin 'dracula/vim', { 'name': 'dracula'  }
+" Plug 'sjl/badwolf'
+Plug 'dracula/vim', { 'name': 'dracula'  }
 
 " Add all plugins before following line
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 " Remapping Esc key to jk
@@ -146,10 +138,6 @@ set nowb
 " Automatically refresh after buffer is changed externally
 set autoread
 
-" badwolf setings
-" Make tab line darker than the background
-let g:badwolf_tabline = 0
-
 " Make gutters darker than the background
 let g:badwolf_darkgutter = 1
 
@@ -157,8 +145,6 @@ let g:badwolf_darkgutter = 1
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-" set conceallevel=1
-" let g:tex_conceal='abdmg'
 
 " Setting up lightline
 set laststatus=2
@@ -169,11 +155,17 @@ nnoremap <silent> <leader>r :Files<CR>
 " Setting maximum textwidth
 set tw=120
 
-" Markdown setup with grip
-let g:vim_markdown_preview_toggle=1
-let g:vim_markdown_preview_github=1
+" Markdown writing
 let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_preview_pandoc=1
+
+" Markdown preview setup
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
 
 " Git mappings
 nmap <leader>gh :diffget //3<CR>
@@ -185,23 +177,8 @@ nmap <leader>gs :G<CR>
 " Goyo
 let g:goyo_width=120
 
-" Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-"
-" let g:syntastic_python_checkers = ['flake8', 'pylint']
-" let g:syntastic_python_flake8_args = "--max-line-length=120"
-" let g:syntastic_python_pylint_args = "--max-line-length=120"
-
 " ALE
 let g:ale_linters = {
-\    'python': ['flake8', 'pylint']
+\    'python': ['pylint']
 \}
-let g:ale_python_flake8_options = "--max-line-length=120"
 let g:ale_python_pylint_options = "--max-line-length=120"

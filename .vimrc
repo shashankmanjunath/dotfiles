@@ -36,14 +36,11 @@ call plug#begin()
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 
-" Git visual cues
-" Plug 'airblade/vim-gitgutter'
-
 " LaTeX handling
 Plug 'lervag/vimtex'
 
 " Autocomplete/Jump to definition
-Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntax Checking
 Plug 'dense-analysis/ale'
@@ -60,15 +57,15 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'djoshea/vim-autoread'
 
 " fzf setup
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Colorscheme
-" Plug 'sjl/badwolf'
-Plug 'dracula/vim', { 'name': 'dracula'  }
+Plug 'morhetz/gruvbox'
 
 " Add all plugins before following line
 call plug#end()
@@ -79,9 +76,7 @@ inoremap jk <Esc>
 
 " Setting up badwolf colorscheme
 set background=dark
-colorscheme dracula
-" colorscheme badwolf
-" colorscheme desert
+colorscheme gruvbox
 
 " Ensuring that we are using 256 color terminal
 let &t_Co=256
@@ -138,16 +133,10 @@ set nowb
 " Automatically refresh after buffer is changed externally
 set autoread
 
-" Make gutters darker than the background
-let g:badwolf_darkgutter = 1
-
 " LaTeX handling
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-
-" Setting up lightline
-set laststatus=2
 
 " Remapping fzf commands
 nnoremap <silent> <leader>r :Files<CR>
@@ -159,8 +148,8 @@ set tw=120
 let g:vim_markdown_folding_disabled=1
 
 " Markdown preview setup
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 0
 let g:mkdp_refresh_slow = 0
 
 nmap <C-s> <Plug>MarkdownPreview
@@ -178,7 +167,13 @@ nmap <leader>gs :G<CR>
 let g:goyo_width=120
 
 " ALE
-let g:ale_linters = {
-\    'python': ['pylint']
+let g:ale_fixers = {
+\    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\    'python': ['black']
 \}
-let g:ale_python_pylint_options = "--max-line-length=120"
+let g:ale_python_black_options = "--line-length 120"
+let g:ale_fix_on_save = 1
+" let g:ale_linters = {
+" \    'python': ['pylint']
+" \}
+" let g:ale_python_pylint_options = "--max-line-length=120"

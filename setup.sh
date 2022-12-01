@@ -62,8 +62,8 @@ if [[ "$OS" == "Ubuntu" ]]; then
     sudo apt-get install zsh wget tmux build-essential cmake vim python3-dev golang
 fi
 
-# fzf_install
-# zsh_install
-# vim_setup
-conda_install
+fzf_install
+zsh_install
+vim_setup
+# conda_install
 

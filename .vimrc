@@ -50,7 +50,7 @@ Plug 'junegunn/goyo.vim'
 
 " Markdown Handling
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'preservim/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Utility
@@ -66,6 +66,7 @@ Plug 'junegunn/fzf.vim'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
+" Plug 'bcicen/vim-vice'
 
 " Add all plugins before following line
 call plug#end()
@@ -77,6 +78,7 @@ inoremap jk <Esc>
 " Setting up badwolf colorscheme
 set background=dark
 colorscheme gruvbox
+" colorscheme vice
 
 " Ensuring that we are using 256 color terminal
 let &t_Co=256
@@ -116,14 +118,14 @@ let g:NERDCompactSexyComs = 1
 " indentation
 let g:NERDDefaultAlign = 'left'
 
-" Allow commmenting and inverting empy lines (useful when commenting a region)
+" Allow commmenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Adding line at 120 characters
-set colorcolumn=120
+" Adding line at 80 characters
+set colorcolumn=80
 
 " Turning off swap files
 set noswapfile
@@ -134,15 +136,19 @@ set nowb
 set autoread
 
 " LaTeX handling
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
+let g:tex_flavor='latexmk'
+" let g:vimtex_view_method='skim'
+let g:vimtex_view_method='sioyek'
+let g:vimtex_view_sioyek_exe='/Applications/sioyek.app/Contents/MacOS/sioyek'
 let g:vimtex_quickfix_mode=0
+" Setting build dir to subdirectory with name of the current file
+let g:vimtex_compiler_latexmk = {'build_dir': {-> expand("%:t:r")}}
 
 " Remapping fzf commands
 nnoremap <silent> <leader>r :Files<CR>
 
 " Setting maximum textwidth
-set tw=120
+set tw=80
 
 " Markdown writing
 let g:vim_markdown_folding_disabled=1
@@ -159,21 +165,18 @@ nmap <C-p> <Plug>MarkdownPreviewToggle
 " Git mappings
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Gpush<CR>
+nmap <leader>gc :G commit<CR>
+nmap <leader>gp :G push<CR>
 nmap <leader>gs :G<CR>
 
 " Goyo
-let g:goyo_width=120
+let g:goyo_width=80
+nmap <leader>G :Goyo<CR>
 
 " ALE
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
-\    'python': ['black']
+\    'python': ['black'],
+\    'tex': ['latexindent']
 \}
-let g:ale_python_black_options = "--line-length 120"
 let g:ale_fix_on_save = 1
-" let g:ale_linters = {
-" \    'python': ['pylint']
-" \}
-" let g:ale_python_pylint_options = "--max-line-length=120"

@@ -1,8 +1,9 @@
-# Adding scripts folder to path
+# Adding scripts directories to path
 export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$HOME/research/scripts
 
 # Specifying vim as default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -87,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Setting up vi-mode key mappings
 bindkey -v
-bindkey 'jk' vi-cmd-mode 
+bindkey 'jk' vi-cmd-mode
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -108,10 +109,9 @@ bindkey 'jk' vi-cmd-mode
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias setzsh="source ~/.zshrc"
+alias vim=nvim
 
 # Setting up dbus env variables to run EOG/other gui applications remotely without errors
 # export $(dbus-launch)
@@ -124,19 +124,31 @@ export TERM=screen-256color
 # Adding python3 bin to path
 export PATH=$PATH:/home/smanjunath/.local/bin
 
+# Confluence setup
+# export CONFLUENCE_USERNAME=shashankmanjunath14@gmail.com
+export CONFLUENCE_USERNAME=manjunath.sh@northeastern.edu
+export CONFLUENCE_PASSWORD=$(cat ~/.confluence/API_TOKEN)
+export CONFLUENCE_ENDPOINT=https://smanjunath.atlassian.net/wiki
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/smanjunath/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/shashankmanjunath/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/smanjunath/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/smanjunath/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/shashankmanjunath/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/shashankmanjunath/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/smanjunath/miniconda3/bin:$PATH"
+        export PATH="/Users/shashankmanjunath/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
+
+if [ -f "/Users/shashankmanjunath/miniconda3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/shashankmanjunath/miniconda3/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
 
-export PATH="$HOME/miniconda3/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

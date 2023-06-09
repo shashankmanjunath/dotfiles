@@ -39,11 +39,14 @@ Plug 'tpope/vim-fugitive'
 " LaTeX handling
 Plug 'lervag/vimtex'
 
-" Autocomplete/Jump to definition
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" LSP Setup
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
 
-" Syntax Checking
-Plug 'dense-analysis/ale'
+" Linter/Formatter setup
+Plug 'mfussenegger/nvim-lint'
+Plug 'mhartington/formatter.nvim'
 
 " Writing Documents
 Plug 'junegunn/goyo.vim'
@@ -137,7 +140,6 @@ set autoread
 
 " LaTeX handling
 let g:tex_flavor='latexmk'
-" let g:vimtex_view_method='skim'
 let g:vimtex_view_method='sioyek'
 let g:vimtex_view_sioyek_exe='/Applications/sioyek.app/Contents/MacOS/sioyek'
 let g:vimtex_quickfix_mode=0
@@ -172,11 +174,3 @@ nmap <leader>gs :G<CR>
 " Goyo
 let g:goyo_width=80
 nmap <leader>G :Goyo<CR>
-
-" ALE
-let g:ale_fixers = {
-\    '*': ['remove_trailing_lines', 'trim_whitespace'],
-\    'python': ['black'],
-\    'tex': ['latexindent']
-\}
-let g:ale_fix_on_save = 1

@@ -2,6 +2,9 @@
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$HOME/research/scripts
 
+# Adding GOPATH
+export PATH=$PATH:$(go env GOPATH)/bin
+
 # Specifying vim as default editor
 export EDITOR=nvim
 
@@ -78,7 +81,7 @@ plugins=(
     fzf
     git
     history
-    tmux
+    # tmux
     vi-mode
 )
 
@@ -124,11 +127,15 @@ export TERM=screen-256color
 # Adding python3 bin to path
 export PATH=$PATH:/home/smanjunath/.local/bin
 
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 # Confluence setup
 # export CONFLUENCE_USERNAME=shashankmanjunath14@gmail.com
-export CONFLUENCE_USERNAME=manjunath.sh@northeastern.edu
-export CONFLUENCE_PASSWORD=$(cat ~/.confluence/API_TOKEN)
-export CONFLUENCE_ENDPOINT=https://smanjunath.atlassian.net/wiki
+# export CONFLUENCE_USERNAME=manjunath.sh@northeastern.edu
+# export CONFLUENCE_PASSWORD=$(cat ~/.confluence/API_TOKEN)
+# export CONFLUENCE_ENDPOINT=https://smanjunath.atlassian.net/wiki
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -149,6 +156,12 @@ if [ -f "/Users/shashankmanjunath/miniconda3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# Creating tunnel command for quartz
+# alias quartz-tunnel="ssh -f -N -L 1313:localhost:1313 research-server"
+
+# Aliasing matlabo for terminal usage
+alias matlab="/Applications/MATLAB_R2022b.app/bin/matlab -nodesktop"
+
+# Setting up MATLAB DYLD_LIBRARY_PATH for use with python
+export DYLD_LIBRARY_PATH=/Applications/MATLAB_R2022b.app/bin/maca64:$DYLD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Applications/MATLAB_R2023a.app/bin/glnxa64
